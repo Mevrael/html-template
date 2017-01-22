@@ -32,9 +32,9 @@ Object.assign(HTMLTemplateElement.prototype, {
     let delta = 0; // when replacing tokens, increase/decrease delta length so next token would be replaced in correct position of html
     tokens.forEach(token => {
       const replaceWith = this.parseToken(token, data);
-    html = html.substr(0, token.startsAt - delta) + replaceWith + html.substr(token.endsAt - delta);
-    delta += token.length - replaceWith.length;
-  });
+      html = html.substr(0, token.startsAt - delta) + replaceWith + html.substr(token.endsAt - delta);
+      delta += token.length - replaceWith.length;
+    });
     return this.htmlToNode(html);
   },
 
