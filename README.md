@@ -14,6 +14,7 @@ template.js contains the implementation of the .parse(data) method on the Templa
 3. Current algorithm transforms first child element to an HTML string (outerHTML) and parses template as a single string
 4. It finds all the expressions
 5. If data was not found, expression should be replaced with an empty string
+6. It should trim() spaces, i.e. both `{{var}}` and `{{ var }}` should be valid
 
 #### A:
 
