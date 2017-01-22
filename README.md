@@ -50,10 +50,25 @@ It should replace all occurrences of `{{ title }}`.
 
 #### C:
 
-Currently block statements (if/endif) in progress:
+It should replace nested vars
 
 ```html
 <template id="3">
+  <div class="box">
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+    <div>{{ author.name }}</div>
+  </div>
+</template>
+```
+
+
+#### D:
+
+Currently block statements (if/endif) in progress:
+
+```html
+<template id="4">
   <div class="box">
     <h1>{{ title }}</h1>
     <p>{{ message }}</p>
