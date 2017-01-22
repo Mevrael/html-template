@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 template v2 proposal WIP</title>
+</head>
+<body>
+
+<!-- simple example, should replace variables -->
+<template id="1">
+  <div class="box">
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+  </div>
+</template>
+
+<!-- simple example #2, should replace all occurrences -->
+<template id="2">
+  <box>
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+    <p>{{ title }}</p>
+  </box>
+</template>
+
+<!-- example #3 - should parse if block and do not display it if expression is false -->
+<template id="3">
+  <div class="box">
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+    {{ if (author) }}
+    <div>{{ author.name }}</div>
+    {{ endif }}
+  </div>
+</template>
+
+<script src="template.js"></script>
+<script>
+  const t1 = document.getElementById('1');
+  const t2 = document.getElementById('2');
+  const t3 = document.getElementById('3');
+
+  const d1 = {title: 'Hello, World', message: 'Lorem Ipsum'};
+  const d2 = {title: 'Hello, World 2', message: 'Lorem Ipsum 2'};
+
+  function test() {
+    console.log(t1.parse(d1).outerHTML);
+  }
+
+  function test2() {
+    console.log(t2.parse(d2).outerHTML);
+  }
+</script>
+
+</body>
+</html>
