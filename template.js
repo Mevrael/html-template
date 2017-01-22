@@ -29,7 +29,7 @@ Object.assign(HTMLTemplateElement.prototype, {
   parse(data) {
     let html = this.getRootNodeAsHtml();
     const tokens = this.getTokens(html);
-    let delta = 0; // when replacing tokens, increase/decrease delta length so next token would be replaced incorrect position of html
+    let delta = 0; // when replacing tokens, increase/decrease delta length so next token would be replaced in correct position of html
     tokens.forEach(token => {
       const replaceWith = this.parseToken(token, data);
     html = html.substr(0, token.startsAt - delta) + replaceWith + html.substr(token.endsAt - delta);
@@ -77,7 +77,7 @@ Object.assign(HTMLTemplateElement.prototype, {
   //   value: string - contents of expression between {{ }},
   //   startsAt: position of {{
   //   endsAt: position of }}
-  //   length: total length of expression starting from the fitst "{" and ending with last "}"
+  //   length: total length of expression starting from the first "{" and ending with last "}"
   // }
   getNextToken(html, startAt = 0) {
     let startPos = html.indexOf('{{', startAt);
